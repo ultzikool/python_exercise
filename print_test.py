@@ -88,3 +88,4 @@ for each_item in movies:
         print(each_item)
 '''
 print("")
+print("看看拉取和获取的区别")
