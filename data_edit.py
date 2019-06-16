@@ -1,21 +1,20 @@
 
 import pickle
 
-with open('james.txt') as jaf:
-    data = jaf.readline()
-james = data.strip().split(',')
+def get_coach_data(filename):
+    try:
+        with open(filename) as f:
+            data = f.readline()
+        return(data.strip().split(','))
+    except IOError as ioerr:
+        print('FIle error:' + str(ioerr))
+        return(None)
 
-with open('julie.txt') as juf:
-    data = juf.readline()
-julie = data.strip().split(',')
 
-with open('mikey.txt') as mif:
-    data = mif.readline()
-mikey = data.strip().split(',')
-
-with open('sarah.txt') as saf:
-    data = saf.readline()
-sarah = data.strip().split(',')
+james = get_coach_data("james.txt")
+julie = get_coach_data("julie.txt")
+mikey = get_coach_data("mikey.txt")
+sarah = get_coach_data("sarah.txt")
 
 
 
@@ -57,6 +56,7 @@ julie = sorted([sanitize(t) for t in julie])
 mikey = sorted([sanitize(t) for t in mikey])
 sarah = sorted([sanitize(t) for t in sarah])
 
+'''
 unique_james = []
 for m in james:
 	if m not in unique_james:
@@ -76,8 +76,10 @@ unique_sarah = []
 for m in sarah:
 	if m not in unique_sarah:
 		unique_sarah.append(m)
+'''
 
-print(unique_james[0:3])
-print(unique_julie[0:3])
-print(unique_mikey[0:3])
-print(unique_sarah[0:3])
+if __name__ == "__main__":
+    print(sorted(set([sanitize(t) for t in james]))[0:3])
+    print(sorted(set([sanitize(t) for t in julie]))[0:3])
+    print(sorted(set([sanitize(t) for t in mikey]))[0:3])
+    print(sorted(set([sanitize(t) for t in sarah]))[0:3])
