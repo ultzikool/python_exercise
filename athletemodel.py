@@ -41,6 +41,14 @@ def get_from_store():
 
     return(all_athletes)
 
+def get_names_from_store():
+    athletes = get_from_store()
+    response = [athletes[each_ath].name for each_ath in athletes]
+    return response
+
+
+
+
 
 the_files = ['sarah2.txt','james2.txt','mikey2.txt','julie2.txt']
 data = put_to_store(the_files)
